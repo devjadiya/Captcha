@@ -1,0 +1,108 @@
+<html>
+<head>
+<script type="text/javascript">
+
+function generatecaptcha()
+
+{
+var cap = new Array('A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','1','2','3','4','5','6','7','8','9','0','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z');
+
+var i;
+
+for (i=0; i<6; i++){
+var a = cap[Math.floor(Math.random() * cap.length)];
+var b = cap[Math.floor(Math.random() * cap.length)];
+var c = cap[Math.floor(Math.random() * cap.length)];
+var d = cap[Math.floor(Math.random() * cap.length)];
+var e = cap[Math.floor(Math.random() * cap.length)];
+}
+
+var code = a + b + c + d + e;
+document.getElementById("maincaptcha").value = code
+}
+
+
+function checkvalidcaptcha(){
+var string1 = removeSpaces(document.getElementById('maincaptcha').value);
+var string2 = removeSpaces(document.getElementById('txtinput').value);
+if(string1==string2){
+document.getElementById('success').innerHTML= "Form is validated Successfully";
+
+
+alert("Congratulations you are verified");
+window.location="https://devtunes-8678c.web.app/";
+return true;
+}
+
+else{
+document.getElementById('error').innerHTML= "Please Enter a Valid Captcha";
+return false;
+}
+}
+
+function removeSpaces(string){
+return string.split(' ').join('');
+}
+
+
+</script>
+</head>
+
+
+<body onload="generateCaptcha();">
+
+<center>
+<h1>
+ Verify yourself by completing Captcha!
+</h1>
+
+<table>
+<tr>
+<td>
+<input type="text" id="maincaptcha" readonly="readonly"/>
+<input type ="button" id= "refresh" value="Refresh" onclick="generatecaptcha();"/>
+</td>
+</tr>
+
+<tr>
+<td>
+<input type="text" id="txtinput"/>
+</td>
+</tr>
+
+<tr>
+<td>
+<input type="button" id="Button1" value="Check" onclick="checkvalidcaptcha();"/>
+</td>
+</tr>
+
+
+<tr>
+<td>
+<span id="error" style="color:red"</span>
+
+</td>
+</tr>
+
+
+
+<tr>
+<td>
+<span id="success" style="color:green"</span>
+</td>
+</tr>
+
+
+
+
+
+</center>
+
+
+
+</body>
+
+
+
+
+</html>
